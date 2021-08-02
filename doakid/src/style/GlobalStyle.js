@@ -3,9 +3,10 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
   :root {
     font-size: 60%;
-    --color-background: #F4F4F4;
-    --color-input-background: #F0F2F5; 
-    --color-button-background: #4A98B0;
+    --color-background: #F9F9F9;
+    --color-secondary-background: #6A0DAD;
+    --color-input-background: #E9E9E9; 
+    --color-button-background: #6A0DAD;
     --color-primary-text: #1F4652;
     --color-secondary-text: #FFFFFF;
     --color-title-text: #0F2127;
@@ -20,6 +21,7 @@ export default createGlobalStyle`
   body, 
   #root {
     height: 100vh;
+    width: 100vw;
   }
   body {
     background-color: var(--color-background);
@@ -29,6 +31,7 @@ export default createGlobalStyle`
     align-items: center;
     justify-content: center;
   }
+
   body,
   button,
   input,

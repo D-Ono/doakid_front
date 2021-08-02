@@ -1,34 +1,26 @@
 import styled from 'styled-components';
 
-export const ContainerHeader = styled.div`
+export const LoginPage = styled.div`
   width: 100vw;
-  height: 14vh;
+  height: 100vh;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   align-items: center;
-  background-color: var(--color-secondary-background);
-.menu{
-  width: auto;
-}
-
-.profile{
-  height: auto;
-  display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
-}
+`;
 
-.Test{
-  width: 100%;
-  height: 14vh;
+export const LoginContainer = styled.div`
+  width: 60%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: center;
-}
-Button {
+  h1 {
+    padding: 4rem;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-title-text);
+  }
+  button {
     width: 20rem;
     height: 5.6rem;
     background: var(--color-button-background);
@@ -44,13 +36,23 @@ Button {
     transition: 0.2s;
     margin: 2rem 0 1.2rem 0;
   }
-
-  Button:hover {
+  button:hover {
     opacity: 0.8;
-    background: var(--color-button-background);
-    color: var(--color-highlight-text);
-    border: 0;
-    border-radius: 0.6rem;
   }
-
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  a{
+    color: #FFFFFF;
+  }
+  @media (min-width: 768px) {
+    max-width: 100vw;
+    padding: 6rem 5rem;
+    margin: 0 8rem;
+    h1 {
+      margin-bottom: 3.6rem;
+    }
+  }
 `;
