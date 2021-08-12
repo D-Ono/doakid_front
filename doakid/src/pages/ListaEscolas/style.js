@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import "@fontsource/amatic-sc";
 
 export const ContainerEscola = styled.div`
   width: 100vw;
@@ -22,6 +23,10 @@ export const ContainerEscola = styled.div`
   }
   h1{
     padding:4rem;
+    font-family: 'Amatic SC', cursive;
+    text-shadow: 1px 2px 3px #9B9B98;
+    letter-spacing: 2px;
+    font-weight: bold;
   }
   img{
     width: 200px;

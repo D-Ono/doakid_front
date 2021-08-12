@@ -15,7 +15,7 @@ function RegisterItensPage() {
   const [inputQuantidade, setInputQuantidade] = React.useState(true);
   const [inputNumeracao, setInputNumeracao] = React.useState(true);
   const success = () => {
-    message.success('Seu Item foi Registrado com Sucesso!', 2);
+    message.success('O item foi cadastrado!', 2);
   };
 
   function handleMenuClick(e) {
@@ -77,7 +77,7 @@ function RegisterItensPage() {
     <ContainerCadastroItens>
         <Header></Header>
         <div>
-          <h1>Cadastrar um Item</h1>
+          <h1>Cadastre um item para doação!</h1>
           <ContainerCadastroItem>
             <InputCustom
               type="text"

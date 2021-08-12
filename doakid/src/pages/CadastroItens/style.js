@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import "@fontsource/amatic-sc";
 
 export const ContainerCadastroItens = styled.div`
   width: 100vw;
@@ -27,8 +28,12 @@ export const ContainerCadastroItens = styled.div`
     align-items: center;
     justify-content: space-around;
   }
-  h1{
+  h1 {
     padding:3rem;
+    font-family: 'Amatic SC', cursive;
+    text-shadow: 1px 2px 3px #9B9B98;
+    letter-spacing: 2px;
+    font-weight: bold;
   }
 `;
 
@@ -48,7 +53,7 @@ export const ContainerCadastroItem = styled.div`
     width: 20rem;
     height: 5.6rem;
     background: var(--color-button-background);
-    color: var(--color-highlight-text);
+    color: #FFFFFF;
     border: 0;
     border-radius: 0.6rem;
     cursor: pointer;
@@ -59,12 +64,16 @@ export const ContainerCadastroItem = styled.div`
     text-decoration: none;
     transition: 0.2s;
     margin: 2rem 0 1.2rem 0;
+    font-size: 2rem;
+    font-family: 'Amatic SC', cursive;
+    text-shadow: 2px 2px 4px #000000;
+    letter-spacing: 2px;
   }
 
   Button:hover {
     opacity: 0.8;
     background: var(--color-button-background);
-    color: var(--color-highlight-text);
+    color: #FFFFFF;
     border: 0;
     border-radius: 0.6rem;
   }

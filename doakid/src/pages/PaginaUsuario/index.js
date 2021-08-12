@@ -11,16 +11,16 @@ function Profile() {
         <Header></Header>
         <div>
           <div className="perfil">  
-            <img src={userPhoto} alt="Foto do Usuario"></img>            
+            <img src={userPhoto} alt="Foto de perfil"></img>            
             <div className="detalhes-perfil">
-              <h1>Olá, Joaquim Barbosa  </h1> 
+              <h1>Olá, Joaquim!  </h1> 
               <h2>Telefone: (18)99620-3465</h2>
               <h2>E-Mail: joaquimBarbosa@gmail.com</h2>
              </div>
           </div>
           <Button>Alterar Dados</Button>
-          <h1>Itens Cadastrados:</h1>
-          <h3>Por enquanto, nenhum item Cadastrado.</h3>
+          <h1>Seus itens</h1>
+          <h3>Você ainda não cadastrou nenhum item!</h3>
         </div>
       </ProfileContainer>
   );

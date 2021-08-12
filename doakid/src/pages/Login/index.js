@@ -12,13 +12,13 @@ function Login() {
   return (
     <LoginPage>
       <SideLogin>
-        <h1>DoaKid</h1>
-        <h3>Ainda não tem uma conta? <Link to='/Cadastro'>Cadastre-se aqui.</Link></h3>
+        <h1 class="doakid-title">DoaKid</h1>
+        <h3>Ainda não tem uma conta? <Link to='/Cadastro'>Faça seu cadastro aqui!</Link></h3>
         <img src={promiseImage} height="300px" width="300px" alt="Imagem de Solidariedade"></img>
        </SideLogin>
       <LoginContainer>
         <form>
-          <h1>Login</h1>
+          <h1>Faça login!</h1>
           <Input
             type="email"
             name="email"

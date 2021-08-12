@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import "@fontsource/amatic-sc";
 
 export const Register = styled.div`
   width: 100vw;
@@ -14,6 +15,9 @@ export const RegisterContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   h1 {
+    font-family: 'Amatic SC', cursive;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px #000000;
     padding: 4rem;
     text-align: center;
     font-size: 4rem;
@@ -24,7 +28,7 @@ export const RegisterContainer = styled.div`
     width: 20rem;
     height: 5.6rem;
     background: var(--color-button-background);
-    color: var(--color-highlight-text);
+    color: #FFFFFF;
     border: 0;
     border-radius: 0.6rem;
     cursor: pointer;
@@ -35,6 +39,10 @@ export const RegisterContainer = styled.div`
     text-decoration: none;
     transition: 0.2s;
     margin: 2rem 0 1.2rem 0;
+    font-family: 'Amatic SC', cursive;
+    text-shadow: 2px 2px 4px #000000;
+    letter-spacing: 2px;
+    font-size: 2rem;
   }
   button:hover {
     opacity: 0.8;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import "@fontsource/amatic-sc";
 
 export const ProfileContainer = styled.div`
   width: 100vw;
@@ -22,6 +23,10 @@ export const ProfileContainer = styled.div`
     justify-content: space-around;
   }
   h1{
+    font-family: 'Amatic SC', cursive;
+    letter-spacing: 2px;
+    text-shadow: 1px 2px 3px #9B9B98;
+    font-weight: bold;
     padding:3rem;
   }
   img{
@@ -32,7 +37,7 @@ export const ProfileContainer = styled.div`
     width: 20rem;
     height: 5.6rem;
     background: var(--color-button-background);
-    color: var(--color-highlight-text);
+    color: #FFFFFF;
     border: 0;
     border-radius: 0.6rem;
     cursor: pointer;
@@ -43,12 +48,16 @@ export const ProfileContainer = styled.div`
     text-decoration: none;
     transition: 0.2s;
     margin: 2rem 0 1.2rem 0;
+    font-family: 'Amatic SC', cursive;
+    text-shadow: 1px 1px #000000;
+    letter-spacing: 2px;
+    font-size: 2rem;
   }
   
   Button:hover {
     opacity: 0.8;
     background: var(--color-button-background);
-    color: var(--color-highlight-text);
+    color: #FFFFFF;
     border: 0;
     border-radius: 0.6rem;
   }

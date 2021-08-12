@@ -1,10 +1,16 @@
 import styled from 'styled-components';
+import "@fontsource/amatic-sc";
 
 export const MainContainer = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
+
+  h1 {
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+  }
 
   .container{
     width: 100vw;

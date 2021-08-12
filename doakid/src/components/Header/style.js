@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import "@fontsource/amatic-sc";
 
 export const ContainerHeader = styled.div`
   width: 100vw;
@@ -8,6 +9,13 @@ export const ContainerHeader = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color: var(--color-secondary-background);
+h1 {
+  font-family: 'Amatic SC', cursive;
+  letter-spacing: 2px;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px #000000;
+  font-size: 4rem;
+}
 .menu{
   width: auto;
 }
@@ -32,7 +40,7 @@ Button {
     width: 20rem;
     height: 5.6rem;
     background: var(--color-button-background);
-    color: var(--color-highlight-text);
+    color: #FFFFFF;
     border: 0;
     border-radius: 0.6rem;
     cursor: pointer;
@@ -48,9 +56,8 @@ Button {
   Button:hover {
     opacity: 0.8;
     background: var(--color-button-background);
-    color: var(--color-highlight-text);
+    color: #FFFFFF;
     border: 0;
     border-radius: 0.6rem;
   }
-
 `;

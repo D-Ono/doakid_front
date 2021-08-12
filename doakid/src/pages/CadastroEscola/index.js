@@ -15,7 +15,7 @@ function RegisterSchoolPage() {
     <Register>
       <SideLogin>
         <h1>DoaKid</h1>
-        <h3>Já tem uma conta? <Link to='/'>Entre aqui.</Link></h3>
+        <h3>Já tem uma conta? <Link to='/'>Entre aqui!</Link></h3>
         <img src={promiseImage} height="300px" width="300px" alt="Imagem de Solidariedade"></img>
        </SideLogin>
       <RegisterContainer>

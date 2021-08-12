@@ -9,7 +9,7 @@ function ListaEscola() {
     <ContainerEscola>
         <Header></Header>
         <div>
-          <h1>Lista de Escolas Cadastradas</h1>
+          <h1>Consulte escolas que recebem doações!</h1>
           <ContainerEscolaCadastrada>
               <div className="escola">
                 <img src={escola} alt="Imagem da Escola"></img>

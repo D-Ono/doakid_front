@@ -9,7 +9,7 @@ function Header() {
   const menu = (
     <Menu >
       <Menu.Item key="1" icon={<UserOutlined />}>
-        <h3><Link exact to="/Profile" >Profile</Link></h3>
+        <h3><Link exact to="/Profile" >Perfil</Link></h3>
       </Menu.Item>
       <Menu.Item key="2" icon={<UserOutlined />}>
         <h3><Link exact to="/" >Sair</Link></h3>
@@ -23,9 +23,9 @@ function Header() {
         <h1>Doakid</h1>
         <div className="menu">
           <Menu style ={{background: "#6A0DAD"}} mode="horizontal">
-            <Menu.Item key="1"><h3><Link to='/Inicio'>Página Inicial</Link></h3></Menu.Item>
-            <Menu.Item key="2"><h3><Link to='/CadastroItens'>Cadastrar Itens</Link></h3></Menu.Item>
-            <Menu.Item key="3"><h3><Link to='/ListaEscola' >Escolas Registradas</Link></h3></Menu.Item>
+            <Menu.Item key="1"><h3><Link to='/Inicio'>Página inicial</Link></h3></Menu.Item>
+            <Menu.Item key="2"><h3><Link to='/CadastroItens'>Cadastrar itens</Link></h3></Menu.Item>
+            <Menu.Item key="3"><h3><Link to='/ListaEscola' >Escolas registradas</Link></h3></Menu.Item>
           </Menu>
         </div>
         <div>

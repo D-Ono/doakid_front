@@ -15,12 +15,12 @@ function RegisterPage() {
     <Register>
       <SideLogin>
         <h1>DoaKid</h1>
-        <h3>Já tem uma conta? <Link to='/'>Entre aqui.</Link></h3>
+        <h3>Já tem uma conta? <Link to='/'>Entre aqui!</Link></h3>
         <img src={promiseImage} height="300px" width="300px" alt="Imagem de Solidariedade"></img>
        </SideLogin>
       <RegisterContainer>
         <form>
-          <h1>Cadastre-se</h1>
+          <h1>Faça o seu cadastro!</h1>
           <div>
             <Button><Link to="/CadastroEscola">Escola</Link></Button>
             <Button><Link to="/Cadastro">Usuarios</Link></Button>

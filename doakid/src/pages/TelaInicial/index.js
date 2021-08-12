@@ -25,7 +25,6 @@ function MainPage() {
         <Header></Header>
         <div className="container">
           <div className="SideBar">
-            <h3>Filtrar Por:</h3>
             <Menu mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
               <SubMenu key="sub1"  title="Livro">
                 <Menu.Item key="1">Option 1</Menu.Item>
