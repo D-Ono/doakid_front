@@ -5,6 +5,8 @@ import userPhoto from '../../assets/user.png'
 import { Button } from 'antd';
 
 function Profile() {
+  const username = localStorage.getItem('@doakid/username');
+  const email = localStorage.getItem('@doakid/email');
 
   return (
       <ProfileContainer>
@@ -13,9 +15,8 @@ function Profile() {
           <div className="perfil">  
             <img src={userPhoto} alt="Foto de perfil"></img>            
             <div className="detalhes-perfil">
-              <h1>Olá, Joaquim!  </h1> 
-              <h2>Telefone: (18)99620-3465</h2>
-              <h2>E-Mail: joaquimBarbosa@gmail.com</h2>
+              <h1>Olá, {username}  </h1> 
+              <h2>E-Mail: {email}</h2>
              </div>
           </div>
           <Button>Alterar Dados</Button>

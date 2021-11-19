@@ -54,6 +54,10 @@ export const LoginContainer = styled.div`
   a{
     color: #FFFFFF;
   }
+  label{
+    margin-right: 30px;
+    margin-left: 5px;
+  }
   @media (min-width: 768px) {
     max-width: 100vw;
     padding: 6rem 5rem;

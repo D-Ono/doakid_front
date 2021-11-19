@@ -20,7 +20,7 @@ function Header() {
   return(
     <ContainerHeader>
       <div className="Test">
-        <h1>Doakid</h1>
+        <h1><Link to='/Inicio'>Doakid</Link></h1>
         <div className="menu">
           <Menu style ={{background: "#6A0DAD"}} mode="horizontal">
             <Menu.Item key="1"><h3><Link to='/Inicio'>Página inicial</Link></h3></Menu.Item>

@@ -69,7 +69,12 @@ export const ContainerCadastroItem = styled.div`
     text-shadow: 2px 2px 4px #000000;
     letter-spacing: 2px;
   }
-
+  Button:target {
+    background: var(--color-button-background);
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 0.6rem;
+  }
   Button:hover {
     opacity: 0.8;
     background: var(--color-button-background);
@@ -94,8 +99,5 @@ export const ContainerCadastroItem = styled.div`
   .text{
     width: 65%;
     border-radius: 0.5rem;
-    background: var(--color-input-background);
   }
-  
-  
 `;

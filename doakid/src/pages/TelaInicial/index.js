@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from '../../components/Header'
-import { MainContainer, Item } from './style'
+import ItemCard from '../../components/ItemCard'
+import { MainContainer } from './style'
 import { Menu } from 'antd';
-import urso from '../../assets/urso.jpg'
+import api from '../../services/api';
 
 function MainPage() {
   const { SubMenu } = Menu;
-
+  const [itens, setItens] = useState([]);
   const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
   
   const [openKeys, setOpenKeys] = React.useState(['sub1']);
@@ -19,6 +20,12 @@ function MainPage() {
         setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
       }
   };
+
+  useEffect(() => {
+      api.get('http://localhost:5000/item/list').then(response => {
+        setItens(response.data);
+      })
+  }, );
 
   return (
     <MainContainer>
@@ -57,24 +64,13 @@ function MainPage() {
             </Menu>
           </div>
           <div className="ItensContainer">
-            <Item>
-              <h2>Urso</h2>
-              <img src={urso} alt="Urso"></img>
-              <p>Urso para crianças se divertirem em perfeito estado</p>
-              <button>Ver Contato</button>
-            </Item>
-            <Item>
-              <h2>Urso</h2>
-              <img src={urso} alt="Urso"></img>
-              <p>Urso para crianças se divertirem em perfeito estado</p>
-              <button>Ver Contato</button>
-            </Item>
-            <Item>
-              <h2>Urso</h2>
-              <img src={urso} alt="Urso"></img>
-              <p>Urso para crianças se divertirem em perfeito estado</p>
-              <button>Ver Contato</button>
-            </Item>
+            {itens.map(item => (
+              <ItemCard 
+                key={item.cod_item} 
+                nome={item.nome_item} 
+                url={item.url}
+                descricao={item.descricao_item}
+              />))}
           </div>
         </div>
     </MainContainer>

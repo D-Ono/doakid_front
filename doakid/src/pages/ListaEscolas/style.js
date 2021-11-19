@@ -6,16 +6,10 @@ export const ContainerEscola = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-
-  div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .escola{
+  align-items: center;
+.escola{
     height: auto;
-    width: 80%;
+    width: 35%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,6 +17,8 @@ export const ContainerEscola = styled.div`
   }
   h1{
     padding:4rem;
+    align-items: center;
+    justify-content: center;
     font-family: 'Amatic SC', cursive;
     text-shadow: 1px 2px 3px #9B9B98;
     letter-spacing: 2px;
@@ -36,12 +32,9 @@ export const ContainerEscola = styled.div`
 `;
 
 export const ContainerEscolaCadastrada = styled.div`
-  width: 80vw;
-  height: 50vh;
-  box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
-  background-color: #FFFFFF;
-  border-radius: 0.4rem;
-  padding: 6rem 2rem;
-  margin-bottom: 6rem;
-
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  justify-content: space-around;
 `;

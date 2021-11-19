@@ -14,6 +14,7 @@ export const InputBlock = styled.div`
     border: 0.1rem solid var(--color-border);
     border-radius: 0.5rem;
     background: var(--color-input-background);
+    padding-left: 15px ;
     
     :required {
       border-left-color: var(--color-primary);
