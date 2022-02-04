@@ -5,13 +5,14 @@ import { MainContainer } from './style'
 import { Menu } from 'antd';
 import api from '../../services/api';
 
-function MainPage() {
+
+function MainPage() {  
   const { SubMenu } = Menu;
   const [itens, setItens] = useState([]);
+  const [copyItens, setCopyItens] = useState([]);
   const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
-  
   const [openKeys, setOpenKeys] = React.useState(['sub1']);
-  
+  let ARROZ= 1;
   const onOpenChange = keys => {
     const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
@@ -22,10 +23,31 @@ function MainPage() {
   };
 
   useEffect(() => {
-      api.get('http://localhost:5000/item/list').then(response => {
+      api.get('http://localhost:5001/item/list').then(response => {
         setItens(response.data);
       })
-  }, );
+  }, [ARROZ] );
+
+  function onChange(e) {
+
+    if(e.key == 1){   // BRINQUEDOS --- 04
+      ARROZ = 2; 
+      setItens(itens.filter(item => (item.cod_item%5) === 4 ))
+    }
+    if(e.key == 2){   // FRALDAS --- 05
+      ARROZ = 4; 
+      setItens(itens.filter(item => (item.cod_item%5) === 0 ))
+    }
+    if(e.key == 3){   // LIVROS --- 01
+      setItens(itens.filter(item => (item.cod_item%5) === 1 ))
+    }
+    if(e.key == 4){   // ROUPAS  --- 02
+      setItens(itens.filter(item => (item.cod_item%5) === 2 ))
+    }
+    if(e.key == 5){   // SAPATOS  --- 03
+      setItens(itens.filter(item => (item.cod_item%5) === 3 ))
+    }
+  }
 
   return (
     <MainContainer>
@@ -33,33 +55,12 @@ function MainPage() {
         <div className="container">
           <div className="SideBar">
             <Menu mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
-              <SubMenu key="sub1"  title="Livro">
-                <Menu.Item key="1">Option 1</Menu.Item>
-                <Menu.Item key="2">Option 2</Menu.Item>
-                <Menu.Item key="3">Option 3</Menu.Item>
-                <Menu.Item key="4">Option 4</Menu.Item>
-              </SubMenu>
-              <SubMenu key="sub2" title="Brinquedos">
-                <Menu.Item key="5">Option 5</Menu.Item>
-                <Menu.Item key="6">Option 6</Menu.Item>
-              </SubMenu>
-              <SubMenu key="sub3" title="Fraldas">
-                <Menu.Item key="9">Option 9</Menu.Item>
-                <Menu.Item key="10">Option 10</Menu.Item>
-                <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item>
-              </SubMenu>
-              <SubMenu key="sub4" title="Roupas">
-                <Menu.Item key="9">Option 9</Menu.Item>
-                <Menu.Item key="10">Option 10</Menu.Item>
-                <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item>
-              </SubMenu>
-              <SubMenu key="sub5" title="Sapato">
-                <Menu.Item key="9">Option 9</Menu.Item>
-                <Menu.Item key="10">Option 10</Menu.Item>
-                <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item>
+              <SubMenu key="sub1"  title="Filtrar por...">
+                <Menu.Item key="1" onClick={onChange}>Brinquedos</Menu.Item>
+                <Menu.Item key="2" onClick={onChange}>Fraldas</Menu.Item>
+                <Menu.Item key="3" onClick={onChange}>Livros</Menu.Item>
+                <Menu.Item key="4" onClick={onChange}>Roupas</Menu.Item>
+                <Menu.Item key="5" onClick={onChange}>Sapatos</Menu.Item>
               </SubMenu>
             </Menu>
           </div>

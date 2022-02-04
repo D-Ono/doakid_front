@@ -7,12 +7,14 @@ import { DownOutlined, UserOutlined } from '@ant-design/icons';
 import api from '../../services/api';
 
 function RegisterItensPage() {
-  const data = '2021-11-16'; 
+  const today = new Date(); 
+  const data = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
+  console.log(data) 
   const [nome, setNome] = useState('');
   const [url, setUrl] = useState('');
   const [descricao, setDescricao] = useState('');
   const [info, setInfo] = useState('');
-  const [infoExtra, setInfoExtra] = useState(0);
+  const [infoExtra, setInfoExtra] = useState(1);
   const { TextArea } = Input;
   const [inputIdade, setInputIdade] = useState(true);
   const [inputTamanho, setInputTamanho] = useState(true);
@@ -20,11 +22,16 @@ function RegisterItensPage() {
   const [inputNumeracao, setInputNumeracao] = useState(true);
   const [itemSelected, setItemSelected] = useState(0);
   
+  function myRandom(min, max, multiple) {
+    return Math.round(Math.random() * (max - min) / multiple) * multiple + min;
+  }
+
   async function success(){
-    const codigoGeral = 27;
-    const codigoItem = 1020;
+    let codigoGeral;
+    const codigoItem = Math.floor(Math.random() * 2000);;
     switch(itemSelected){
-      case 1:   //Livro 
+      case 1:   //Livro  - Codigo Geral é multiplos 
+      codigoGeral = myRandom(1, 10000, 5);
         try {
           const response = await api.post('http://localhost:5000/livro/create',
           {
@@ -47,6 +54,7 @@ function RegisterItensPage() {
         message.success('O item foi cadastrado!', 2);
         break;
       case 2:   // ROUPA 
+      codigoGeral = myRandom(2, 10000, 5);
         try {
           const response = await api.post('http://localhost:5000/roupa/create',
           {
@@ -70,6 +78,7 @@ function RegisterItensPage() {
         message.success('O item foi cadastrado!', 2);
         break;
       case 3:   //sapato
+        codigoGeral = myRandom(3, 10000, 5);
         try {
           const response = await api.post('http://localhost:5000/sapato/create',
           {
@@ -93,6 +102,7 @@ function RegisterItensPage() {
         message.success('O item foi cadastrado!', 2);
         break;
       case 4: // Brinquedo 
+        codigoGeral = myRandom(4, 10000, 5);
         try {
           const response = await api.post('http://localhost:5000/brinquedo/create',
           {
@@ -116,6 +126,7 @@ function RegisterItensPage() {
         message.success('O item foi cadastrado!', 2);
         break;
       case 5: // Fralda
+       codigoGeral = myRandom(5, 10000, 5);
         try {
           const response = await api.post('http://localhost:5000/fralda/create',
           {
@@ -130,8 +141,11 @@ function RegisterItensPage() {
           });
           console.log(response)
           if(response.status === 200) {
-            document.getElementsByTagName('nome').value=''; // Limpa o campo
-
+            setNome('');
+            setUrl("");
+            setDescricao("");
+            setInfo('');
+            setInfoExtra('');
           }
         } catch (error) {
           console.log(error)
@@ -142,6 +156,7 @@ function RegisterItensPage() {
       default:
         message.warning('Selecione um tipo de item a ser doado!', 2);
     }
+
   };
 
   function handleMenuClick(e) {
@@ -214,12 +229,14 @@ function RegisterItensPage() {
               type="text"
               name="nome"
               placeholder="Nome do Item"
+              value={nome}
               onChange={(e) => setNome(e.target.value)}
             />
             <InputCustom
               type="text"
               name="url"
               placeholder="URL da Imagem"
+              value = {url}
               onChange={(e) => setUrl(e.target.value)}
             />
             <TextArea 
@@ -228,6 +245,7 @@ function RegisterItensPage() {
               placeholder="Descrição do Produto" 
               showCount 
               maxLength={150} 
+              value = {descricao}
               onChange={(e) => setDescricao(e.target.value)}
               />
             <Space>
@@ -238,12 +256,12 @@ function RegisterItensPage() {
               </Dropdown>
             </Space>
             <div className="input-extras">
-              {inputIdade ? <div/> :<InputCustom style={{width: "50%"}} placeholder="Idade Recomendada" onChange={(e) => setInfo(e.target.value)}/>}
-              {inputNumeracao ? <div/> : <InputCustom style={{width: "50%"}} placeholder="Numeração" onChange={(e) => setInfoExtra(e.target.value)}/>}
+              {inputIdade ? <div/> :<InputCustom style={{width: "50%"}} placeholder="Idade Recomendada (2-5 Anos)" value={info} onChange={(e) => setInfo(e.target.value)}/>}
+              {inputNumeracao ? <div/> : <InputCustom style={{width: "50%"}} placeholder="Numeração" value={infoExtra} onChange={(e) => setInfoExtra(e.target.value)}/>}
             </div>
             <div className="input-extras">
-              {inputTamanho ? <div/> : <InputCustom style={{width: "50%"}} placeholder="Tamanho"  onChange={(e) => setInfo(e.target.value)}/>}
-              {inputQuantidade ? <div/> : <InputCustom style={{width: "50%"}} placeholder="Quantidade" onChange={(e) => setInfoExtra(e.target.value)}/>}
+              {inputTamanho ? <div/> : <InputCustom style={{width: "50%"}} placeholder="Tamanho" value={info}  onChange={(e) => setInfo(e.target.value)}/>}
+              {inputQuantidade ? <div/> : <InputCustom style={{width: "50%"}} placeholder="Quantidade" value={infoExtra} onChange={(e) => setInfoExtra(e.target.value)}/>}
             </div>
             <Space>
               <Button onClick={success}>Cadastrar</Button>

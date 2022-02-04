@@ -6,8 +6,10 @@ import { SideLogin } from '../../components/SideLogin'
 import promiseImage from "../../assets/promise.svg";
 import api from '../../services/api';
 import { login } from '../../services/auth'; //<Link to='/Inicio'>Entrar</Link>
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  const history = useHistory();
   const [email_escola, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [email_familia, setEmailFamilia] = useState('');
@@ -24,22 +26,17 @@ async function handleSubmit(e) {
         email_escola,
         senha
       });
+      
       //console.log(Object.values(response.data)[0].hasOwnProperty('cod_orientador'));
       if(response.status === 200) {
         login(response.data.token);
         console.log(response.data[0]);
         localStorage.setItem('@doakid/username', response.data[0].nome_escola);
         localStorage.setItem('@doakid/email', response.data[0].email_escola);
+        history.push("/Inicio");
       }
     } catch (error) {
-      if (error.response.status === 404) {
-        alert("Matricula Incorreta!")
-      }
-      if (error.response.status === 400) {
-        alert("Senha Incorreta!")
-      }
-      //console.log(error);
-      //console.log(error.response);
+      alert("Matricula ou Senha Incorretos!")
     }
   }else if (user === "Usuarios"){
     console.log(email_familia)
@@ -57,14 +54,10 @@ async function handleSubmit(e) {
         console.log(response.data);
         localStorage.setItem('@doakid/username', response.data[0].nome);
         localStorage.setItem('@doakid/email', response.data[0].email_familia);
+        history.push("/Inicio");
       }
     } catch (error) {
-      if (error.response.status === 404) {
-        alert("Matricula Incorreta!")
-      }
-      if (error.response.status === 400) {
-        alert("Senha Incorreta!")
-      }
+      alert("Matricula ou Senha Incorretos!")
     }
   }
     
@@ -102,7 +95,7 @@ async function handleSubmit(e) {
             <input type="radio" id="css" name="fav_language" value="Escola"/>
             <label for="css">Escola</label>
           </div>
-          <button type="submit"><Link to="/Inicio">Entrar</Link></button>
+          <button type="submit">Entrar</button>
         </form>
       </LoginContainer>
     </LoginPage>

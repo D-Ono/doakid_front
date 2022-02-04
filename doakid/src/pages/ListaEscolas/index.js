@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../../components/Header';
-import Card from '../../components/Card';
+import Card from '../../components/SchoolCard';
 import {ContainerEscola, ContainerEscolaCadastrada} from './style'
 import api from '../../services/api';
 
@@ -25,6 +25,7 @@ function ListaEscola() {
               telefone={escola.numero}
               email={escola.email_escola}
               rua={escola.rua_escola}
+              numero={escola.numero_rua}
               bairro={escola.bairro_escola}
             />))}
         </ContainerEscolaCadastrada>
