@@ -28,7 +28,7 @@ function RegisterItensPage() {
 
   async function success(){
     let codigoGeral;
-    const codigoItem = Math.floor(Math.random() * 2000);;
+    const codigoItem = Math.floor(Math.random() * 5000);
     switch(itemSelected){
       case 1:   //Livro  - Codigo Geral é multiplos 
       codigoGeral = myRandom(1, 10000, 5);
