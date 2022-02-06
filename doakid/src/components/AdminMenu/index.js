@@ -25,21 +25,21 @@ function AdminMenu() {
             >
                 <SubMenu key="sub1" title="Itens">
                     <Menu.Item key="1">
-                        Itens Disponíveis
+                        <Link to="/AdminItensDisponiveis">Itens Disponíveis</Link>
                     </Menu.Item>
                     <Menu.Item key="2">
-                        Itens Doados
+                        <Link to="/AdminItensDoados">Itens Doados</Link>
                     </Menu.Item>
                     <Menu.Item key="3">
-                        Informações sobre doações
+                        <Link to="/AdminInfo">Informações sobre doações</Link>
                     </Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub1" title="Usuarios">
                     <Menu.Item key="4">
-                        Escolas Cadastradas
+                        <Link to="/AdminEscolas">Escolas Cadastradas</Link>
                     </Menu.Item>
                     <Menu.Item key="5">
-                        <Link to="/Cadastro">Usuarios Cadastrados</Link>
+                        <Link to="/AdminUsuarios">Usuarios Cadastrados</Link>
                     </Menu.Item>
                 </SubMenu>
             </Menu>
