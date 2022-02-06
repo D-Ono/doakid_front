@@ -23,18 +23,20 @@ function AdminMenu() {
                 onOpenChange={onOpenChange}
                 style={{ width: 256 }}
             >
-                <SubMenu key="sub1" title="Itens">
+                <SubMenu key="sub1" title="Informações">
                     <Menu.Item key="1">
-                        <Link to="/AdminItensDisponiveis">Itens Disponíveis</Link>
-                    </Menu.Item>
-                    <Menu.Item key="2">
-                        <Link to="/AdminItensDoados">Itens Doados</Link>
-                    </Menu.Item>
-                    <Menu.Item key="3">
-                        <Link to="/AdminInfo">Informações sobre doações</Link>
+                        <Link to="/AdminInfo">Informações Gerais</Link>
                     </Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub1" title="Usuarios">
+                <SubMenu key="sub2" title="Itens">
+                    <Menu.Item key="2">
+                        <Link to="/AdminItensDisponiveis">Itens Disponíveis</Link>
+                    </Menu.Item>
+                    <Menu.Item key="3">
+                        <Link to="/AdminItensDoados">Itens Doados</Link>
+                    </Menu.Item>
+                </SubMenu>
+                <SubMenu key="sub3" title="Usuarios">
                     <Menu.Item key="4">
                         <Link to="/AdminEscolas">Escolas Cadastradas</Link>
                     </Menu.Item>

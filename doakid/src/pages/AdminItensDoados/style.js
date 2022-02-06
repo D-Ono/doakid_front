@@ -12,3 +12,7 @@ export const MainContainer = styled.div`
     display: flex;
 
 `;
+
+export const ItemContainer = styled.div`
+    
+`;

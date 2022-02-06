@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
   :root {
     font-size: 60%;
-    --color-background: #F9F9F9;
+    --color-background: #F5F5F5;
     --color-secondary-background: #6A0DAD;
     --color-input-background: #E9E9E9; 
     --color-button-background: #6A0DAD;

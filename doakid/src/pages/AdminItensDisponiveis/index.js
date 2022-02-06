@@ -1,7 +1,9 @@
 import React from 'react';
-import { Container, MainContainer } from './style';
+import { Container, ItemContainer, MainContainer } from './style';
 import AdminHeader from '../../components/AdminHeader';
 import AdminMenu from '../../components/AdminMenu';
+import { AdminTitle } from '../../components/AdminTitle';
+import AdminItemCard from '../../components/AdminItemCard';
 
 function AdminItensDisponiveis() {
     const username = localStorage.getItem('@doakid/username');
@@ -12,6 +14,12 @@ function AdminItensDisponiveis() {
         <AdminHeader></AdminHeader>
         <MainContainer>
             <AdminMenu></AdminMenu>
+            <div className='MainContent'>
+              <AdminTitle>Itens Disponiveis</AdminTitle>
+              <ItemContainer>
+                <AdminItemCard></AdminItemCard>
+              </ItemContainer>
+            </div>
         </MainContainer>
       </Container>
     );

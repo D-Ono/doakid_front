@@ -12,3 +12,6 @@ export const MainContainer = styled.div`
     display: flex;
 
 `;
+
+export const UserContainer = styled.div`
+`;

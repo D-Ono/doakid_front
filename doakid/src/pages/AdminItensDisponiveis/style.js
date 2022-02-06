@@ -10,5 +10,13 @@ export const MainContainer = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
+    .MainContent {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+    }
+`;
 
+export const ItemContainer = styled.div`
+    
 `;
