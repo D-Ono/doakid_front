@@ -29,6 +29,13 @@ export const ProfileContainer = styled.div`
     font-weight: bold;
     padding:3rem;
   }
+  h2{
+    font-family: 'Amatic SC', cursive;
+    letter-spacing: 2px;
+    text-shadow: 1px 2px 3px #9B9B98;
+    font-weight: bold;
+  }
+
   img{
     width: 200px;
     height: 200px;

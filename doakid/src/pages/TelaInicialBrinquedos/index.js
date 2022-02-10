@@ -6,7 +6,7 @@ import { Menu } from "antd";
 import api from "../../services/api";
 import { Link } from 'react-router-dom';
 
-function MainPage() {
+function MainPageToys() {
   const { SubMenu } = Menu;
   const [itens, setItens] = useState([]);
   const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
@@ -21,8 +21,8 @@ function MainPage() {
   };
 
   useEffect(() => {
-    api.get("http://localhost:5000/item/openList").then((response) => {
-      setItens(response.data);
+    api.get("http://localhost:5000/item/list").then((response) => {
+      setItens(response.data.filter((item) => item.cod_item % 5 === 4));
     });
   }, []);
 
@@ -75,4 +75,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default MainPageToys;
