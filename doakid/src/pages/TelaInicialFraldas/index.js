@@ -21,7 +21,7 @@ function MainPageFraldas() {
   };
 
   useEffect(() => {
-    api.get("http://localhost:5000/item/list").then((response) => {
+    api.get("http://localhost:5000/item/openList").then((response) => {
       setItens(response.data.filter((item) => item.cod_item % 5 === 0));
     });
   }, []);
