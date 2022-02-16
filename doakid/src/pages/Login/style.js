@@ -14,7 +14,7 @@ export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
+  
   h1 {
     font-family: 'Amatic SC', cursive;
     padding: 4rem;

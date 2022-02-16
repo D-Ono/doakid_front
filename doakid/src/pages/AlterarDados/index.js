@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BodyContainer, Container, DataContainer, InputDiv, PhotoContainer } from './style';
 import Header from '../../components/Header';
-import userPhoto from '../../assets/user.png'
+import Photo from '../../assets/user.png'
 import api from "../../services/api";
 import { message, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 
 function AlterarDados() {
   const history = useHistory();
+  const [selectedFile, setSelectedFile] = useState(null);
   const { confirm } = Modal;
   const userCode = localStorage.getItem('@doakid/userCode');
   const [nome, setNome] = useState('');
@@ -19,6 +20,7 @@ function AlterarDados() {
   const [senhaAtual, setSenhaAtual] = useState('');
   const [novaSenha, setNovaSenha] = useState('');
   const [novaSenhaConfirm, setNovaSenhaConfirma] = useState('');
+  const [encodedString, setEncodedString] = ('');
   
   useEffect(() => {
     api.post(`http://localhost:5000/familia/user/${userCode}`, {cod_familia: userCode}).then(
@@ -33,7 +35,32 @@ function AlterarDados() {
         setNovaSenhaConfirma(response.data[0].senha)
       });
     }, []);
-    
+
+    function handleFileInputChange(e){  //
+      let baseURL = "";
+      const preview = document.querySelector('img');
+      // Make new FileReader
+      let reader = new FileReader();
+
+      // Convert the file to base64 text
+      reader.readAsDataURL(e.currentTarget.files[0]);
+
+      // on reader load somthing...
+      reader.onload = () => {
+        // Make a fileInfo Object
+        console.log("Called", reader);
+        baseURL = reader.result;
+        preview.src = reader.result;
+        let compressedImg = reader.result.split('').reduce((o, c) => {
+          if (o[o.length - 2] === c && o[o.length - 1] < 35) o[o.length - 1]++;
+          else o.push(c, 0);
+          return o;
+        },[]).map(_ => typeof _ === 'number' ? _.toString(36) : _).join('');
+        console.log(compressedImg);
+        
+      };
+    }
+
     function showDeleteConfirm() {
       confirm({
         title: 'Você realmente deseja Alterar seus Dados?',
@@ -43,6 +70,7 @@ function AlterarDados() {
         okType: 'danger',
         cancelText: 'Cancelar',
         async onOk() {
+          console.log(selectedFile)
           if(senha !== senhaAtual || novaSenha !== novaSenhaConfirm){
             if(senha !== senhaAtual){
               message.error("A Senha Atual está Incorreta. Os dados não foram alterados.", 3);
@@ -86,8 +114,12 @@ function AlterarDados() {
         <Header></Header>
         <BodyContainer>
           <PhotoContainer>
-            <img src={userPhoto} alt="Foto de perfil"></img>   
-            <button className="changePhoto">Alterar Foto</button>
+            <img src={encodedString} alt="preview."></img>
+            <input 
+              type="file" 
+              value={setSelectedFile}
+              onChange={handleFileInputChange}
+            />
           </PhotoContainer>
           <DataContainer>
           <InputDiv>
@@ -95,7 +127,7 @@ function AlterarDados() {
             <input
               type="name"
               value= {nome}
-              onChange={(e) => setNome(e.target.value)}
+              onChange={(e) => setNome(e.target.value)} 
               className="input"
             />
           </InputDiv>

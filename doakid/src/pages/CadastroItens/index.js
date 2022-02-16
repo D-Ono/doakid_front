@@ -9,12 +9,12 @@ import api from '../../services/api';
 function RegisterItensPage() {
   const today = new Date(); 
   const data = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
-  console.log(data) 
+  const cod_Usuario = localStorage.getItem('@doakid/userCode');
   const [nome, setNome] = useState('');
   const [url, setUrl] = useState('');
   const [descricao, setDescricao] = useState('');
   const [info, setInfo] = useState('');
-  const [infoExtra, setInfoExtra] = useState(1);
+  const [infoExtra, setInfoExtra] = useState();
   const { TextArea } = Input;
   const [inputIdade, setInputIdade] = useState(true);
   const [inputTamanho, setInputTamanho] = useState(true);
@@ -28,10 +28,10 @@ function RegisterItensPage() {
 
   async function success(){
     let codigoGeral;
-    const codigoItem = Math.floor(Math.random() * 5000);
+    const codigoItem = Math.floor(Math.random() * 50000);
     switch(itemSelected){
       case 1:   //Livro  - Codigo Geral é multiplos 
-      codigoGeral = myRandom(1, 10000, 5);
+      codigoGeral = myRandom(1, 50000, 5);
         try {
           const response = await api.post('http://localhost:5000/livro/create',
           {
@@ -41,11 +41,15 @@ function RegisterItensPage() {
             descricao,
             data, 
             codigoItem, 
-            info
+            info, 
+            cod_Usuario
           });
           if(response.status === 200) {
-            document.getElementsByTagName('nome').value=''; // Limpa o campo
-
+            setNome('');
+            setUrl("");
+            setDescricao("");
+            setInfo('');
+            setInfoExtra('');
           }
         } catch (error) {
           console.log(error)
@@ -54,7 +58,7 @@ function RegisterItensPage() {
         message.success('O item foi cadastrado!', 2);
         break;
       case 2:   // ROUPA 
-      codigoGeral = myRandom(2, 10000, 5);
+      codigoGeral = myRandom(2, 50000, 5);
         try {
           const response = await api.post('http://localhost:5000/roupa/create',
           {
@@ -64,12 +68,16 @@ function RegisterItensPage() {
             descricao,
             data, 
             codigoItem, 
-            info
+            info,
+            cod_Usuario
           });
           console.log(response)
           if(response.status === 200) {
-            document.getElementsByTagName('nome').value=''; // Limpa o campo
-
+            setNome('');
+            setUrl("");
+            setDescricao("");
+            setInfo('');
+            setInfoExtra('');
           }
         } catch (error) {
           console.log(error)
@@ -78,7 +86,7 @@ function RegisterItensPage() {
         message.success('O item foi cadastrado!', 2);
         break;
       case 3:   //sapato
-        codigoGeral = myRandom(3, 10000, 5);
+        codigoGeral = myRandom(3, 50000, 5);
         try {
           const response = await api.post('http://localhost:5000/sapato/create',
           {
@@ -88,12 +96,16 @@ function RegisterItensPage() {
             descricao,
             data, 
             codigoItem, 
-            infoExtra
+            infoExtra,
+            cod_Usuario
           });
           console.log(response)
           if(response.status === 200) {
-            document.getElementsByTagName('nome').value=''; // Limpa o campo
-
+            setNome('');
+            setUrl("");
+            setDescricao("");
+            setInfo('');
+            setInfoExtra('');
           }
         } catch (error) {
           console.log(error)
@@ -102,7 +114,7 @@ function RegisterItensPage() {
         message.success('O item foi cadastrado!', 2);
         break;
       case 4: // Brinquedo 
-        codigoGeral = myRandom(4, 10000, 5);
+        codigoGeral = myRandom(4, 50000, 5);
         try {
           const response = await api.post('http://localhost:5000/brinquedo/create',
           {
@@ -112,12 +124,15 @@ function RegisterItensPage() {
             descricao,
             data, 
             codigoItem, 
-            info
+            info,
+            cod_Usuario
           });
-          console.log(response)
           if(response.status === 200) {
-            document.getElementsByTagName('nome').value=''; // Limpa o campo
-
+            setNome('');
+            setUrl("");
+            setDescricao("");
+            setInfo('');
+            setInfoExtra('');
           }
         } catch (error) {
           console.log(error)
@@ -126,7 +141,7 @@ function RegisterItensPage() {
         message.success('O item foi cadastrado!', 2);
         break;
       case 5: // Fralda
-       codigoGeral = myRandom(5, 10000, 5);
+       codigoGeral = myRandom(5, 50000, 5);
         try {
           const response = await api.post('http://localhost:5000/fralda/create',
           {
@@ -137,7 +152,8 @@ function RegisterItensPage() {
             data, 
             codigoItem, 
             infoExtra, 
-            info
+            info,
+            cod_Usuario
           });
           console.log(response)
           if(response.status === 200) {

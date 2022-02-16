@@ -11,16 +11,17 @@ import { message, Modal } from 'antd';
 import { useHistory } from "react-router-dom";
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 
-function FamilyProfile() {
+function SchoolProfile() {
   const history = useHistory();
-  const userCode = localStorage.getItem('@doakid/userCode');
   const { confirm } = Modal;
+  const userCode = localStorage.getItem('@doakid/userCode');
+  console.log(userCode);
   const [user, setUser] = useState([]);
   const [itensDisponiveis, setItensDisponiveis] = useState([]);
   const [itensDoados, setItensDoados] = useState([]);
 
   useEffect(() => {
-    api.post(`http://localhost:5000/familia/user/${userCode}`, {cod_familia: userCode}).then(
+    api.post(`http://localhost:5000/escola/user/${userCode}`, {cod_escola: userCode}).then(
       (response) => {
         setUser(response.data[0]);
     });
@@ -28,11 +29,12 @@ function FamilyProfile() {
 
   useEffect(() => {
     api.get("http://localhost:5000/item/openList").then((response) => {
-        setItensDisponiveis(response.data.filter((item) => item.cod_Usuario == userCode));
-      });
-      api.get("http://localhost:5000/item/closeList").then((response) => {
-        setItensDoados(response.data.filter((item) => item.cod_Usuario == userCode));
-      });
+      setItensDisponiveis(response.data.filter((item) => item.cod_Usuario == userCode));
+    });
+    api.get("http://localhost:5000/item/closeList").then((response) => {
+      setItensDoados(response.data.filter((item) => item.cod_Usuario == userCode));
+      console.log(response.data)
+    });
   }, [itensDisponiveis]);
 
   function showDeleteConfirm() {
@@ -44,10 +46,12 @@ function FamilyProfile() {
       okType: 'danger',
       cancelText: 'Cancelar',
       onOk() {
-        api.delete(`http://localhost:5000/familia/delete/${userCode}`, {data: {cod_familia: userCode}}).then(
-            () => {
-              message.success('A sua conta no Doakid foi excluída!', 2)
-              history.push("/");
+        api.delete(`http://localhost:5000/escola/delete/${userCode}`, {data: {cod_escola: userCode}}).then(
+            (response) => {
+              if(response.status === 200){
+                message.success('A sua conta no Doakid foi excluída!', 2)
+                history.push("/");
+              }
             } )
       },
       onCancel() {
@@ -63,13 +67,16 @@ function FamilyProfile() {
           <div className="perfil">  
             <img src={userPhoto} alt="Foto de perfil"></img>            
             <div className="detalhes-perfil">
-              <h1>Olá, {user.nome + " " + user.sobrenome}  </h1> 
-              <h2>E-Mail: {user.email_familia }</h2>
+              <h1>Olá, {user.nome_escola}  </h1> 
+              <h2>E-Mail: {user.email_escola} </h2>
               <h2>Telefone: {user.numero}</h2>
+              <h2>Rua: {user.rua_escola} Nº {user.numero_rua}</h2>
+              <h2>Bairro: {user.bairro_escola}</h2>
+              <h2>Horario de Funcionamento: {user.horario_funcionamento_inicio} - {user.horario_funcionamento_fim} </h2>
              </div>
           </div>
           <div className='buttonContainer'>
-            <Button><Link exact to="/AlterarDados">Alterar Dados</Link></Button>
+            <Button><Link exact to="/AlterarDadosEscola">Alterar Dados</Link></Button>
             <Button className='deleteUser'  onClick={showDeleteConfirm} type="dashed">Excluir a Conta</Button>
           </div>
           <ItemContainer>
@@ -79,7 +86,7 @@ function FamilyProfile() {
                 <hr/>
                 <ItemContainer>
                 {
-                  (itensDisponiveis == 0) ? 
+                  itensDisponiveis == 0 ? 
                     <h2>Você não tem nenhum item para doação Disponível! </h2>
                   :
                   itensDisponiveis.map((item) => (
@@ -126,4 +133,4 @@ function FamilyProfile() {
   );
 }
 
-export default FamilyProfile;
+export default SchoolProfile;

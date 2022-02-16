@@ -39,7 +39,7 @@ export const ContainerCadastroItens = styled.div`
 
 export const ContainerCadastroItem = styled.div`
   width: 80vw;
-  height: 63vh;
+  height: 85vh;
   box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
   background-color: #FFFFFF;
   border-radius: 0.4rem;

@@ -3,13 +3,12 @@ import "@fontsource/amatic-sc";
 
 export const Container = styled.div`
     height: 20rem; 
-    width: 30rem; 
+    width: 27.5rem; 
     background-color: #FFF; 
     display: flex; 
     flex-direction: column;
     justify-content: flex-start;
     align-items: center; 
-    margin-right: 3rem;
 
     h2 {
         padding:4rem;

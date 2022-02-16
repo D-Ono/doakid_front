@@ -11,4 +11,16 @@ export const MainContainer = styled.div`
     height: 100vh;
     display: flex;
 
+    .MainContent {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+    }
+`;
+
+export const SchoolContainer = styled.div`
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: center; 
+    margin-top: 5rem;
 `;

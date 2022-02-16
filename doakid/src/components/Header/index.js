@@ -5,11 +5,16 @@ import {Dropdown, Menu} from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 function Header() {
+  const userCode = localStorage.getItem('@doakid/userCode');
 
   const menu = (
     <Menu >
       <Menu.Item key="1" icon={<UserOutlined />}>
-        <h3><Link exact to="/Profile" >Perfil</Link></h3>
+        {userCode%2 === 0 ? 
+          <h3><Link exact to="/FamilyProfile" >Perfil</Link></h3>
+          :
+          <h3><Link exact to="/SchoolProfile" >Perfil</Link></h3>
+        }
       </Menu.Item>
       <Menu.Item key="2" icon={<UserOutlined />}>
         <h3><Link exact to="/" >Sair</Link></h3>

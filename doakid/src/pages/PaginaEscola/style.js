@@ -17,7 +17,7 @@ export const ProfileContainer = styled.div`
   }
   .perfil{
     height: auto;
-    padding: 4rem;
+    margin: 4rem;
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -49,7 +49,6 @@ export const ProfileContainer = styled.div`
     text-shadow: 1px 2px 3px #9B9B98;
     font-weight: bold;
   }
-
   img{
     width: 200px;
     height: 200px;
@@ -94,7 +93,6 @@ export const ContainerEscolaCadastrada = styled.div`
   margin-bottom: 6rem;
 
 `;
-
 
 export const ItemContainer = styled.div`
     display: flex; 

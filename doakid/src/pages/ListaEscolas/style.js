@@ -36,5 +36,10 @@ export const ContainerEscolaCadastrada = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; 
-  justify-content: space-around;
+  padding-left: 10rem;
+
+  div {
+    margin-right: 6rem;
+    padding-left: 3.5rem;
+  }
 `;

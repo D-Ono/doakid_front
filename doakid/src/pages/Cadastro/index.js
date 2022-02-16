@@ -7,41 +7,39 @@ import { SideLogin } from '../../components/SideLogin'
 import promiseImage from "../../assets/promise.svg";
 import { Button } from 'antd';
 import api from '../../services/api';
-import { login } from '../../services/auth';
 
 function RegisterPage() {
   const [email_familia, setEmail_Familia] = useState('');
-  const [nome, setNome] = useState('');
+  const [nomeCompleto, setNomeCompleto] = useState('');
   const [senha, setSenha] = useState('');
   const [numero, setNumero] = useState('');
   const history = useHistory();
-
-  async function handleSubmit(e) {
-    let cod_familia = Math.floor(Math.random() * 5000);
-    let sobrenome = "Leifert";
-    let nome = "David"
-    e.preventDefault();
-    console.log(nome)
-    const data = {
-      cod_familia,
-      nome,
-      sobrenome, 
-      email_familia, 
-      senha, 
-      numero
-    }
+  let nome, sobrenome, cod_familia, nomeCompletoArray
+  function myRandom(min, max, multiple) {
+    return Math.round(Math.random() * (max - min) / multiple) * multiple + min;
+    
+  }
+  function handleSubmit(e) {
+    nomeCompletoArray = nomeCompleto.split(' ');
+    nome = nomeCompletoArray[0];
+    sobrenome = nomeCompletoArray[1];
+    cod_familia = myRandom(0, 50000, 2);
     try {
-      const response = await api.post('http://localhost:5000/familia/create', data);
-      //console.log(Object.values(response.data)[0].hasOwnProperty('cod_orientador'));
-      if(response.status === 200) {
-        login(response.data.token);
-        localStorage.setItem('@doakid/username', response.data[0].nome);
-        localStorage.setItem('@doakid/email', response.data[0].email_familia);
-        history.push("/Inicio");
-      }
+      const response = api.post('http://localhost:5000/familia/create', {
+        cod_familia,
+        nome,
+        sobrenome,
+        email_familia, 
+        senha, 
+        numero
+      });
+        
     } catch (error) {
       alert(error)
     }
+    console.log(cod_familia)
+    localStorage.setItem('@doakid/userCode', cod_familia);
+    history.push("/Inicio");
   }
 
   return (
@@ -62,8 +60,8 @@ function RegisterPage() {
             type="name"
             name="nome"
             placeholder="Nome Completo "
-            value={nome}
-            onChange={e => setNome(e.target.value)}
+            value={nomeCompleto}
+            onChange={e => setNomeCompleto(e.target.value)}
             required
           />
           <Input

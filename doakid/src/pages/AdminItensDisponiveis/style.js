@@ -18,5 +18,8 @@ export const MainContainer = styled.div`
 `;
 
 export const ItemContainer = styled.div`
-    
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: center; 
+    margin-top: 5rem;
 `;

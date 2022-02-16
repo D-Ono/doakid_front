@@ -24,5 +24,5 @@ export const FrameContainer = styled.div`
     display: flex; 
     flex-wrap: wrap;
     align-items: start; 
-    justify-content: space-around;
+    justify-content: center;
 `;

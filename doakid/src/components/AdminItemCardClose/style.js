@@ -24,12 +24,4 @@ export const Item = styled.div`
   p{
     text-align: center;
   }
-
-  button:hover {
-      opacity: 0.8;
-      background: var(--color-button-background);
-      color: #FFFFFF;
-      border: 0;
-      border-radius: 0.6rem;
-    }
 `;

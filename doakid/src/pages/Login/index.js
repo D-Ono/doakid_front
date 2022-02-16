@@ -16,8 +16,10 @@ function Login() {
   const [user, setUser] = useState('');
 
 async function handleSubmit(e) {
-  console.log(user);
   e.preventDefault();
+  if(email_escola == "admin@admin"){
+    history.push("/AdminInfo");
+  }
   if(user === "Escola"){
     console.log("aba");
     try {
@@ -26,34 +28,27 @@ async function handleSubmit(e) {
         email_escola,
         senha
       });
-      
-      //console.log(Object.values(response.data)[0].hasOwnProperty('cod_orientador'));
       if(response.status === 200) {
         login(response.data.token);
         console.log(response.data[0]);
-        localStorage.setItem('@doakid/username', response.data[0].nome_escola);
-        localStorage.setItem('@doakid/email', response.data[0].email_escola);
+        localStorage.setItem('@doakid/userCode', response.data[0].cod_escola);
         history.push("/Inicio");
       }
     } catch (error) {
       alert("Matricula ou Senha Incorretos!")
     }
   }else if (user === "Usuarios"){
-    console.log(email_familia)
     try {
       const response = await api.post('http://localhost:5000/familia/login',
       {
         email_familia,
         senha
       });
-      //console.log(Object.values(response.data)[0].hasOwnProperty('cod_orientador'));
       console.log("teste");
       if(response.status === 200) {
-        console.log("ca");
         login(response.data.token);
         console.log(response.data);
-        localStorage.setItem('@doakid/username', response.data[0].nome);
-        localStorage.setItem('@doakid/email', response.data[0].email_familia);
+        localStorage.setItem('@doakid/userCode', response.data[0].cod_familia);
         history.push("/Inicio");
       }
     } catch (error) {

@@ -12,11 +12,11 @@ function ListaEscola() {
         setEscola(response.data);
         console.log(escola);
       })
-  }, );
+  }, []);
   return (
     <ContainerEscola>
         <Header></Header>
-        <h1>Consulte escolas que recebem doações!</h1>
+        <h1>Consulte escolas que recebem e fazem doações!</h1>
         <ContainerEscolaCadastrada>
           {escola.map(escola => (
             <Card 
